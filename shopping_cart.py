@@ -27,7 +27,6 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
 
 # pprint(products)
 
@@ -58,7 +57,7 @@ print("----------------------------------")
 print("Piggly Wiggly")
 print("www.pigglywiggly.com")
 print("----------------------------------")  
-print(now.strftime("%Y-%m-%d %I:%M %p"))
+print("CHECK OUT AT: " + now.strftime("%Y-%m-%d %I:%M %p"))
 print("----------------------------------")
 
 #print(selected ids)
@@ -66,11 +65,29 @@ for selected_id in selected_ids:
         matching_products = [p for p in products if str(p[("id")]) == str(selected_id)]
         matching_product =  matching_products[0]
         total_price = total_price + matching_product["price"]
-    ## format price in USD
-        total_price_usd = "${0:.2f}".format(total_price)
+    ## format price of matching products in USD
+        total_price_format = "${0:.2f}".format(total_price)
         price_usd = "${0:.2f}".format(matching_product["price"])
+    ## printing selected products with formatted prices
         print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(price_usd))
 
-print("SUBTOTAL: " + str(total_price_usd))
+#printing subtotal
+print("----------------------------------")
+print("SUBTOTAL: " + str(total_price_format))
+
+#calculating taxes
+tax_paid = total_price * .0875
+tax_paid_format = "${0:.2f}".format(total_price * 0.0875)
+print("TAX @ 8.75%: " + tax_paid_format)
+
+#calculating grand total
+grand_total = total_price + tax_paid
+grand_total_format = "${0:.2f}".format(grand_total)
+print("GRAND TOTAL: " + grand_total_format)
+
+#end of receipt
+print("----------------------------------")
+print("Thank you, have a nice day.")
+print("----------------------------------")
 
 
