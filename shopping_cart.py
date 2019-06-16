@@ -30,4 +30,12 @@ print(products)
 
 # TODO: write some Python code here to produce the desired output
 
-print("PIGGLY WIGGLY")
+#
+# INFO CAPTURE
+#
+
+selected_id = input("Please input a product identifier:")
+print(selected_id)
+print(type(selected_id))
+
+# INFO DISPLAY
