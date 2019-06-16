@@ -2,6 +2,8 @@
 
 #from pprint import pprint
 
+import datetime
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -26,6 +28,7 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 print(products)
+
 # pprint(products)
 
 # TODO: write some Python code here to produce the desired output
@@ -49,8 +52,16 @@ while True:
         selected_ids.append(selected_id)
 # INFO DISPLAY
 
+#top of receipt
+now = datetime.datetime.now()
+print("----------------------------------")
+print("Piggly Wiggly")
+print("www.pigglywiggly.com")
+print("----------------------------------")  
+print(now.strftime("%Y-%m-%d %I:%M %p"))
+print("----------------------------------")
+
 #print(selected ids)
-    
 for selected_id in selected_ids:
         matching_products = [p for p in products if str(p[("id")]) == str(selected_id)]
         matching_product =  matching_products[0]
@@ -60,6 +71,6 @@ for selected_id in selected_ids:
         price_usd = "${0:.2f}".format(matching_product["price"])
         print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(price_usd))
 
-print("TOTAL PRICE: " + str(total_price_usd))
+print("SUBTOTAL: " + str(total_price_usd))
 
 
